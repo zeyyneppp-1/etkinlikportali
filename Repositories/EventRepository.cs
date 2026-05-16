@@ -52,8 +52,7 @@ public void Delete(Event @event)
 {
     _context.Events.Remove(@event);
 }
-// ... diğer kodların (Add, Save vs.) ...
 
-    } // En sondaki parantez bu, bunun üstünde kalmalı.
+    } 
 }
    

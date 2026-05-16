@@ -8,7 +8,7 @@ namespace EtkinlikPortali.Interface
         IEnumerable<Category> GetAllCategories();
         Event? GetById(int id);
         void Add(Event @event);
-        void AddCategory(Category category); // İşte eksik olan ve hata veren satır buydu!
+        void AddCategory(Category category); 
         void Update(Event @event);
         void Delete(Event @event);
         void Save();

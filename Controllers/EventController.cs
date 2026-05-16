@@ -7,7 +7,7 @@ using EtkinlikPortali.ViewModels;
 namespace EtkinlikPortali.Controllers
 { 
 
-    public class EventController : Controller // BU SATIRI EKLEMEN ŞART (Hataların %90'ı bu eksik diye çıkıyor)
+    public class EventController : Controller 
     { 
         private readonly IEventRepository _eventRepository;
         private readonly IEventRepository _categoryRepository;
@@ -17,10 +17,6 @@ namespace EtkinlikPortali.Controllers
             _eventRepository = eventRepository;
             _categoryRepository = categoryRepository;
         }
-
-        // Buradan sonra senin Index, Create, Edit metodların gelecek...
-
-        // 1. ANA SAYFA (LİSTELEME)
 
         // 2. İNCELE (DETAY) SAYFASI - YENİ EKLEDİĞİMİZ YER
        public IActionResult Details(int id)
