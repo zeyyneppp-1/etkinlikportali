@@ -7,6 +7,7 @@ version=1
 # To control where cache files are stored, use the following VS Code setting:
 #   "dotnet.projectsystem.cacheInProjectFolder": true
 
+
 [project]
 language=C#
 primary
