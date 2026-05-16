@@ -1,0 +1,93 @@
+@model IEnumerable<EtkinlikPortali.ViewModels.EventViewModel>
+
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4 pb-3 border-bottom">
+        <div>
+            <h3 class="fw-bold text-dark mb-0">Sakarya Etkinlik Dünyası ✨</h3>
+            <p class="text-muted small mb-0">Şehrindeki en yeni aktiviteleri keşfet.</p>
+        </div>
+        
+        <div class="d-flex gap-2">
+            <div class="input-group input-group-sm" style="width: 250px;">
+                <span class="input-group-text bg-white border-end-0"><i class="bi bi-search"></i></span>
+                <input type="text" id="searchInput" class="form-control" placeholder="Etkinlik ara...">
+
+<button class="btn btn-primary" onclick="searchEvents()">Ara</button>
+
+<script>
+function searchEvents() {
+    var searchText = document.getElementById("searchInput").value;
+    // Mevcut linkin sonuna arama kelimesini ekleyip sayfayı yönlendiriyoruz
+    window.location.href = "/Event/Index?searchTerm=" + searchText;
+}
+</script>
+            </div>
+            
+            <select id="categoryFilter" class="form-select" onchange="filterByCategory()">
+    <option value="">Tüm Kategoriler</option>
+    <option value="Eğitim">Eğitim</option>
+    <option value="Gezi">Gezi</option>
+    <option value="Workshop">Workshop</option>
+    <option value="Tiyatro">Tiyatro</option>
+</select>
+
+<script>
+function filterByCategory() {
+    var category = document.getElementById("categoryFilter").value;
+    window.location.href = "/Event/Index?category=" + category;
+}
+</script>
+
+            <a asp-action="Create" class="btn btn-primary btn-sm rounded-pill px-3 shadow-sm">
+                <i class="bi bi-plus-lg"></i> Yeni
+            </a>
+        </div>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+        @foreach (var item in Model)
+        {
+            <div class="col">
+                <div class="card h-100 border-0 shadow-sm premium-card">
+                    <div class="card-body p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                         <span class="badge rounded-pill bg-soft-primary px-3 text-primary">
+    @(item.CategoryName ?? "Genel")
+</span>
+                        </div>
+                        <h5 class="card-title fw-bold text-dark mb-3">@item.Title</h5>
+                        <p class="card-text text-secondary small mb-2">
+                            <i class="bi bi-geo-alt-fill text-danger me-1"></i> @item.Location
+                        </p>
+                    </div>
+                    <div class="card-footer bg-transparent border-0 d-flex justify-content-between pb-4 px-4">
+                        <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-indigo rounded-pill px-4 btn-sm">İncele</a>
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-warning rounded-pill px-3 ms-2">
+    <i class="bi bi-pencil-fill"></i> Düzenle
+</a>
+<a asp-action="Delete" asp-route-id="@item.Id" 
+   class="btn btn-outline-danger btn-sm rounded-pill shadow-sm" 
+   onclick="return confirm('Bu etkinliği silmek istediğinize emin misiniz?')">
+   🗑️ Sil
+</a>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.Id" class="text-danger opacity-50" onclick="return confirm('Silmek istediğine emin misin?')">
+                                <i class="bi bi-trash3-fill"></i>
+                            </a>
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    body { background-color: #f9fafb; }
+    .premium-card { transition: all 0.3s ease; border-radius: 1rem; }
+    .premium-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.05) !important; }
+    .bg-soft-primary { background-color: #eef2ff; border: 1px solid #e0e7ff; }
+    .btn-indigo { background-color: #4f46e5; color: white; border: none; }
+    .btn-indigo:hover { background-color: #4338ca; color: white; }
+</style>

@@ -1,0 +1,41 @@
+@model EtkinlikPortali.ViewModels.EventViewModel
+
+<div class="container mt-5 pb-5">
+    <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+        <div class="row g-0 h-100">
+  <div class="col-md-5 d-none d-md-block p-0" style="position: relative; min-height: 500px;">
+    <img src="@Model.ImageUrl" alt="Görsel" 
+         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;">
+</div>
+            <div class="col-md-7 p-5 bg-white">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a asp-action="Index">Anasayfa</a></li>
+                        <li class="breadcrumb-item active">@Model.CategoryName</li>
+                    </ol>
+                </nav>
+                <<h1 class="h2 fw-bold text-dark mb-4">@Model.Title</h1>
+                
+                <div class="d-flex align-items-center mb-4 text-muted fs-5">
+                    <div class="me-4"><i class="bi bi-calendar-event me-2 text-primary"></i>@Model.Date.ToLongDateString()</div>
+                    <div><i class="bi bi-geo-alt me-2 text-danger"></i>@Model.Location</div>
+                </div>
+
+                <div class="alert alert-light border-start border-primary border-4 py-3">
+                    <h5 class="fw-bold">Hakkında</h5>
+                    <p class="mb-0 text-secondary">
+    @Model.Description
+</p>
+                </div>
+
+                <div class="mt-5 d-flex gap-3">
+                    <a asp-action="Index" class="btn btn-light btn-lg rounded-pill shadow-sm px-4">🔙 Geri Dön</a>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning btn-lg rounded-pill shadow-sm px-4">✏️ Düzenle</a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

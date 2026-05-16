@@ -1,0 +1,46 @@
+@model EtkinlikPortali.Models.Event
+
+<div class="container mt-4">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Yeni Etkinlik Oluştur</h4>
+        </div>
+        <div class="card-body">
+            <form asp-action="Create">
+                <div class="mb-3">
+                    <label class="form-label font-weight-bold">Etkinlik Başlığı</label>
+                    <input asp-for="Title" class="form-control" placeholder="Örn: Yazılım Semineri" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label font-weight-bold">Tarih</label>
+                        <input asp-for="Date" type="date" class="form-control" />
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label font-weight-bold">Konum</label>
+                        <input asp-for="Location" class="form-control" placeholder="Örn: Sakarya Üniv. Kültür Merkezi" />
+                    </div>
+                    <div class="mb-3">
+    <label class="form-label font-weight-bold">Kategori</label>
+    <select asp-for="CategoryId" class="form-select border shadow-sm">
+        <option value="">-- Bir Kategori Seçin --</option>
+        <option value="1">Teknoloji 💻</option>
+        <option value="2">Workshop 🛠️</option>
+        <option value="3">Eğlence 🎭</option>
+        <option value="4">Spor 🏆</option>
+    </select>
+</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label font-weight-bold">Kontenjan</label>
+                    <input asp-for="Capacity" type="number" class="form-control" />
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success px-5">Kaydet</button>
+                    <a asp-action="Index" class="btn btn-secondary shadow-sm">Listeye Dön</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
