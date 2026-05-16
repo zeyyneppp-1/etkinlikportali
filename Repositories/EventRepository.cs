@@ -3,6 +3,7 @@ using EtkinlikPortali.Interface;
 using EtkinlikPortali.Models;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace EtkinlikPortali.Repositories
 {
     public class EventRepository : IEventRepository
