@@ -52,3 +52,9 @@ Proje kaynak kodlarını bilgisayarınıza indirin:
 ```bash
 git clone [https://github.com/zeyneppp-1/etkinlikportali.git](https://github.com/zeyneppp-1/etkinlikportali.git)
 cd etkinlikportali
+### 💡 Bu Komutlar Ne İşe Yarar? (Geliştirici Notu)
+ Bu komutlar, projenin yerel bir bilgisayara indirildiğinde eksiksiz ve hatasız bir şekilde ayağa kaldırılabilmesi için gerekli olan standart .NET ve Entity Framework Core işleyişidir:
+
+* **dotnet restore (2. Adım):** Projenin derlenebilmesi ve çalışabilmesi için internet ortamından çekilmesi gereken tüm harici NuGet paketlerini (Bootstrap, Identity ve Veritabanı sürücüleri vb.) yerel ortama otomatik olarak indirir ve eksik bağımlılıkları tamamlar.
+* **dotnet ef database update (3. Adım):** Kod katmanında kurgulanan veritabanı şemalarını, tabloları ve ASP.NET Core Identity üyelik yapılarını yerel bilgisayarınızda otomatik olarak işler ve sıfırdan güvenli bir `app.db` veritabanı dosyası oluşturur. Böylece uygulamanın çalışma esnasında veritabanı bağlantı hatası (Database Connection Error) vermesini engeller.
+* **dotnet run (4. Adım):** Projenin yerel sunucusunu (Kestrel) tetikleyerek web uygulamasını aktif hale getirir ve tarayıcı üzerinden yerel adrese (`localhost`) erişim sağlayarak platformun canlı olarak test edilmesine olanak tanır.
