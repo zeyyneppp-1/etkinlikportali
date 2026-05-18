@@ -8,6 +8,7 @@ Bu proje, **Sakarya Üniversitesi Bilgi Sistemleri ve Teknolojileri Bölümü** 
 * **Adı Soyadı:** Zeynep Çiftçi
 * **Bölümü:** Bilgi Sistemleri ve Teknolojileri (2. Sınıf)
 * **Üniversite:** Sakarya Üniversitesi
+* **Öğrenci Numarası: B241204017
 
 ---
 
